@@ -20,4 +20,9 @@ Route::get('/', function () {
 });
 
 Route::resource('users', UserController::class);
+Route::get("/users/{user}/tags", [UserController::class, 'editTags'])->name('users.editTags');
+Route::post("/users/{user}/tags", [UserController::class, 'updateTags'])->name('users.updateTags');
+Route::put('/users/{user}/updateTags', [UserController::class, 'updateTags'])->name('users.updateTags');
+
+
 Route::resource('tags', TagController::class);

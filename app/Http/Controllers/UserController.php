@@ -4,16 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\Tag;
+use Illuminate\Http\Request;
 
-/**
- * Class UserController
- * @package App\Http\Controllers
- */
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $users = User::paginate();
@@ -22,29 +17,20 @@ class UserController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $user = new User();
-        return view('user.create', compact('user'));
+        $tags = Tag::all();
+        return view('user.create', compact('user', 'tags'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(UserRequest $request)
     {
         User::create($request->validated());
-
         return redirect()->route('users.index')
             ->with('success', 'User created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $user = User::find($id);
@@ -52,22 +38,43 @@ class UserController extends Controller
         return view('user.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('user.edit', compact('user'));
+        // Debo tambien buscar las tags que el usuario ya tiene
+        $user = User::findOrFail($id);
+        $userTags = $user->tags()->get();
+        $tags = Tag::all();
+        return view('user.edit', compact('user', 'tags', 'userTags'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UserRequest $request, User $user)
     {
-        $user->update($request->validated());
+
+
+        //   array:4 [▼ // app/Http/Controllers/UserController.php:55
+        //   "_method" => "PATCH"
+        //   "_token" => "PSREdG4DhCf1TFKijW1tCoGMLLxeeQMRQ7vfB3RD"
+        //   "name" => "Andres"
+        //   "tags" => array:2 [▼
+        //     0 => "7"
+        //     1 => "8"
+        //   ]
+        // ]
+
+
+        $user->name = $request->input('name');
+
+        // Actualizar las tags asociadas al usuario
+        if ($request->has('tags')) {
+            $tags = $request->input('tags');
+            $user->tags()->sync($tags);
+        } else {
+            // Si no se selecciona ninguna tag, desasociar todas las existentes
+            $user->tags()->detach();
+        }
+
+        $user->save();
+        // $user->update($request->validated());
 
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully');
@@ -79,5 +86,24 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
+    }
+
+    public function editTags(User $user)
+    {
+        $tags = Tag::all();
+        $userTags = $user->tags()->pluck('tags.id')->toArray();
+
+        return view('user.editTags', compact('user', 'tags', 'userTags'));
+    }
+
+    public function updateTags(Request $request, User $user)
+    {
+        $request->validate([
+            'tags' => 'required|array',
+        ]);
+
+        $user->tags()->sync($request->tags);
+
+        return redirect()->route('users.index')->with('success', 'Tags updated successfully.');
     }
 }
