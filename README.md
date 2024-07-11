@@ -4,6 +4,8 @@
 
 Este proyecto implementa un CRUD (Create, Read, Update, Delete) de Usuarios y Tags de Usuarios utilizando Laravel.
 
+![Texto alternativo](https://res.cloudinary.com/dg84upfsp/image/upload/v1720728543/Captura_desde_2024-07-11_15-07-39_d4dt3n.png)
+
 ## Requisitos
 
 - PHP >= 8.1
