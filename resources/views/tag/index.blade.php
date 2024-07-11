@@ -15,6 +15,14 @@
                             <span id="card_title">
                                 {{ __('Tag') }}
                             </span>
+                            <form action="{{ route('tags.index') }}" method="GET" class="float-right">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Search..."
+                                        value="{{ request('search') }}">
+                                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                                </div>
+                            </form>
+
 
                             <div class="float-right">
                                 <a href="{{ route('tags.create') }}" class="btn btn-primary btn-sm float-right"

@@ -14,8 +14,16 @@
                             <span id="card_title">
                                 {{ __('User') }}
                             </span>
+                            <form action="{{ route('users.index') }}" method="GET" class="float-right">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Search..."
+                                        value="{{ request('search') }}">
+                                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                                </div>
+                            </form>
                             <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
                             </div>
@@ -60,10 +68,12 @@
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                                        <a class="btn btn-sm btn-primary" href="{{ route('users.show', $user->id) }}">
+                                                        <a class="btn btn-sm btn-primary"
+                                                            href="{{ route('users.show', $user->id) }}">
                                                             <i class="fa fa-fw fa-eye"></i> {{ __('Show') }}
                                                         </a>
-                                                        <a class="btn btn-sm btn-success" href="{{ route('users.edit', $user->id) }}">
+                                                        <a class="btn btn-sm btn-success"
+                                                            href="{{ route('users.edit', $user->id) }}">
                                                             <i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}
                                                         </a>
                                                         @csrf

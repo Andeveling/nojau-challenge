@@ -1,10 +1,4 @@
-# Prueba Técnica del Proceso de Atracción de Talento de Nojau
-
-La siguiente prueba nos ayudará a identificar dos escenarios: el primero está dirigido a que tú tengas un acercamiento a los temas relacionados con los retos técnicos que podemos enfrentar en el equipo de producto de Nojau, y el segundo está enfocado en que nosotros podamos vivir la experiencia de resolver un reto junto a ti.
-
-Si tienes dudas, puedes remitirlas al correo edwarsanz.nojau@gmail.com con copia a dani@nojau.co, quienes con gusto te las resolverán.
-
-## Prueba Técnica: CRUD de Usuarios y Tags de Usuarios
+# Prueba Técnica: CRUD de Usuarios y Tags de Usuarios
 
 ### Objetivo
 Crear una aplicación en Laravel que permita gestionar usuarios y sus tags mediante operaciones CRUD (Create, Read, Update, Delete).
@@ -54,12 +48,12 @@ Crear una aplicación en Laravel que permita gestionar usuarios y sus tags media
 - [✅] Añadir la funcionalidad para asignar y desasignar tags a los usuarios desde la vista de detalles del usuario.
 
 #### Extras (Opcional)
-- [ ] Crear seeders para poblar la base de datos.
-- [ ] Implementar paginación en las vistas de listado de usuarios y tags.
-- [ ] Añadir búsqueda por nombre en la lista de usuarios.
-- [ ] Implementar validación de formularios.
+- [✅] Crear seeders para poblar la base de datos.
+- [✅] Implementar paginación en las vistas de listado de usuarios y tags.
+- [✅] Añadir búsqueda por nombre en la lista de usuarios.
+- [✅] Implementar validación de formularios.
 
 ### Entrega
-- [ ] Crear un repositorio en GitHub y subir el código de la aplicación.
+- [✅] Crear un repositorio en GitHub y subir el código de la aplicación.
 - [ ] Incluir un archivo `README.md` con instrucciones claras sobre cómo configurar y ejecutar la aplicación.
 - [ ] Enviar el entregable al correo edwarsanz.nojau@gmail.com con copia a dani@nojau.co.

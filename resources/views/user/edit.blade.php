@@ -14,7 +14,7 @@
                         <span class="card-title">{{ __('Update') }} User {{ $user->name }}</span>
                         @if ($userTags->count() > 0)
                             @foreach ($userTags as $tag)
-                                <span class="badge bg-secondary">{{ $tag->name }}</span>
+                                <span class="badge bg-primary">{{ $tag->name }}</span>
                             @endforeach
                         @else
                             <span class="badge bg-danger">No tags</span>

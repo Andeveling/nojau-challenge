@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tags = Tag::paginate(8);
+        $query = Tag::query();
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('name', 'like', '%' . $searchTerm . '%');
+        }
+        $tags = $query->paginate(8);
 
         return view('tag.index', compact('tags'))
             ->with('i', (request()->input('page', 1) - 1) * $tags->perPage());

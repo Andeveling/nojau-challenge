@@ -9,12 +9,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(8);
+        $query = User::query();
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('name', 'like', '%' . $searchTerm . '%');
+        }
+        $users = $query->paginate(8);
 
         return view('user.index', compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
+        ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
     public function create()
@@ -58,19 +63,6 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-
-
-        //   array:4 [▼ // app/Http/Controllers/UserController.php:55
-        //   "_method" => "PATCH"
-        //   "_token" => "PSREdG4DhCf1TFKijW1tCoGMLLxeeQMRQ7vfB3RD"
-        //   "name" => "Andres"
-        //   "tags" => array:2 [▼
-        //     0 => "7"
-        //     1 => "8"
-        //   ]
-        // ]
-
-
         $user->name = $request->input('name');
 
         // Actualizar las tags asociadas al usuario
@@ -83,7 +75,6 @@ class UserController extends Controller
         }
 
         $user->save();
-        // $user->update($request->validated());
 
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully');
