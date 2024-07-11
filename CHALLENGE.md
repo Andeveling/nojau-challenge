@@ -55,5 +55,5 @@ Crear una aplicación en Laravel que permita gestionar usuarios y sus tags media
 
 ### Entrega
 - [✅] Crear un repositorio en GitHub y subir el código de la aplicación.
-- [ ] Incluir un archivo `README.md` con instrucciones claras sobre cómo configurar y ejecutar la aplicación.
-- [ ] Enviar el entregable al correo edwarsanz.nojau@gmail.com con copia a dani@nojau.co.
+- [✅] Incluir un archivo `README.md` con instrucciones claras sobre cómo configurar y ejecutar la aplicación.
+- [✅] Enviar el entregable al correo edwarsanz.nojau@gmail.com con copia a dani@nojau.co.
