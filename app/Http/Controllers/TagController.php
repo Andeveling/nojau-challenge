@@ -10,7 +10,7 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::paginate();
+        $tags = Tag::paginate(8);
 
         return view('tag.index', compact('tags'))
             ->with('i', (request()->input('page', 1) - 1) * $tags->perPage());
