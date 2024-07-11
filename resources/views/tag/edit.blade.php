@@ -1,23 +1,24 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} User
+    {{ __('Update') }} Tag
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="row">
+        <div class="">
             <div class="col-md-12">
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} User</span>
+                        <span class="card-title">{{ __('Update') }} Tag</span>
                     </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
+                    <div class="card-body bg-white">
+                        <form method="POST" action="{{ route('tags.update', $tag->id) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('user.form')
+                            @include('tag.form')
 
                         </form>
                     </div>

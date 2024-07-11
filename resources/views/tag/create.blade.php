@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} User
+    {{ __('Create') }} Tag
 @endsection
 
 @section('content')
@@ -11,13 +11,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} User</span>
+                        <span class="card-title">{{ __('Create') }} Tag</span>
                     </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
+                    <div class="card-body ">
+                        <form method="POST" action="{{ route('tags.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('user.form')
+                            @include('tag.form')
 
                         </form>
                     </div>

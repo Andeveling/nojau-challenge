@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $user->name ?? __('Show') . " " . __('User') }}
+    {{ $tag->name ?? __('Show') . " " . __('Tag') }}
 @endsection
 
 @section('content')
@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} User</span>
+                            <span class="card-title">{{ __('Show') }} Tag</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('users.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('tags.index') }}"> {{ __('Back') }}</a>
                         </div>
                     </div>
 
@@ -22,7 +22,7 @@
 
                         <div class="form-group mb-2 mb20">
                             <strong>Name:</strong>
-                            {{ $user->name }}
+                            {{ $tag->name }}
                         </div>
 
                     </div>
