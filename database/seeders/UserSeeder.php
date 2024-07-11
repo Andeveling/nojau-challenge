@@ -16,11 +16,10 @@ class UserSeeder extends Seeder
         // Obtener todas las tags creadas
         $tags = Tag::all();
 
-        // Asignar tags a cada usuario
+        // Asignar entre 0 y 4 tags a cada usuario
         foreach ($users as $user) {
-            $user->tags()->sync(
-                $tags->random(rand(1, 3))->pluck('id')->toArray()
-            ); // Asignar entre 1 y 3 tags aleatorias a cada usuario
+            $tagsToAssign = $tags->random(rand(0, 4))->pluck('id')->toArray();
+            $user->tags()->sync($tagsToAssign);
         }
     }
 }
