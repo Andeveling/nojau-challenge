@@ -24,6 +24,24 @@
 
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 
+    <style>
+        .pagination svg {
+            width: 1em;
+            height: 1em;
+        }
+
+        .pagination .page-item {
+            margin: 0 0.25em;
+        }
+
+        .pagination .page-item .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+
 </head>
 
 <body>
