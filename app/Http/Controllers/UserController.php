@@ -26,7 +26,16 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        User::create($request->validated());
+        // Validar y crear el usuario
+        $user = User::create($request->validated());
+
+        // Sincronizar los tags seleccionados
+        if ($request->has('tags')) {
+            $tags = $request->input('tags');
+            $user->tags()->sync($tags);
+        }
+
+        // Redireccionar
         return redirect()->route('users.index')
             ->with('success', 'User created successfully.');
     }

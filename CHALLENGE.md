@@ -51,7 +51,7 @@ Crear una aplicación en Laravel que permita gestionar usuarios y sus tags media
   - [✅] Crear un nuevo tag.
   - [✅] Editar un tag existente.
   - [✅] Eliminar un tag existente.
-- [ ] Añadir la funcionalidad para asignar y desasignar tags a los usuarios desde la vista de detalles del usuario.
+- [✅] Añadir la funcionalidad para asignar y desasignar tags a los usuarios desde la vista de detalles del usuario.
 
 #### Extras (Opcional)
 - [ ] Crear seeders para poblar la base de datos.

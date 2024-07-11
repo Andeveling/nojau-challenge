@@ -54,13 +54,15 @@
 
                                                 <td>
                                                     @if ($user->tags->count() > 0)
-                                                        <ul>
+                                                        <ul class="list-unstyled">
                                                             @foreach ($user->tags as $tag)
                                                                 <li class="badge bg-primary">{{ $tag->name }}</li>
                                                             @endforeach
                                                         </ul>
                                                     @else
-                                                        <span class="badge bg-danger">No tags</span>
+                                                        <div class="flex justify-center">
+                                                            <span class="badge bg-danger">No tags</span>
+                                                        </div>
                                                     @endif
                                                 </td>
 
